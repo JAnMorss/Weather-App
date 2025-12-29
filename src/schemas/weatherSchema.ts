@@ -26,7 +26,9 @@ const HourlyUnitsSchema = z.object({
   relative_humidity_2m: z.string(),
   precipitation: z.string(),
   windspeed_10m: z.string(),
-  weathercode: z.string(),
+  winddirection_10m: z.string(),
+  cloudcover: z.string(),
+  pressure_msl: z.string(),
 });
 
 const DailyUnitsSchema = z.object({
@@ -37,6 +39,7 @@ const DailyUnitsSchema = z.object({
   sunrise: z.string(),
   sunset: z.string(),
   weathercode: z.string(),
+  uv_index_max: z.string(),
 });
 
 const WeatherSchema = z.object({
@@ -56,7 +59,10 @@ const WeatherSchema = z.object({
     relative_humidity_2m: z.array(z.number()),
     precipitation: z.array(z.number()),
     windspeed_10m: z.array(z.number()),
+    winddirection_10m: z.array(z.number()),
     weathercode: z.array(z.number()),
+    cloudcover: z.array(z.number()),
+    pressure_msl: z.array(z.number()),
   }),
   daily_units: DailyUnitsSchema,
   daily: z.object({
@@ -67,6 +73,7 @@ const WeatherSchema = z.object({
     sunrise: z.array(z.string()),
     sunset: z.array(z.string()),
     weathercode: z.array(z.number()),
+    uv_index_max: z.array(z.number()),
   }),
 });
 
