@@ -3,13 +3,16 @@ import { getWeather } from '../../api';
 import Card from './Card';
 import { getWeatherIcon } from '../../utils/weatherIcons';
 import WeatherIcon from '../WeatherIcon';
+import type { Coords } from '../../types';
 
-type Props = {};
+type Props = {
+    coords: Coords;
+};
 
-export default function DailyForecast({}: Props) {
+export default function DailyForecast({ coords }: Props) {
     const { data } = useSuspenseQuery({
-        queryKey: ['weather'],
-        queryFn: () => getWeather({ lat: 10.3157, lon: 123.8854 }),
+        queryKey: ['weather', coords],
+        queryFn: () => getWeather({ lat: coords.lat, lon: coords.lon }),
     });
 
     if (!data) return null;
