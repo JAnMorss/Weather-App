@@ -1,5 +1,8 @@
-import GeocodeSchema from "./schemas/GeocodeSchema";
+import { AirPollutionSchema } from "./schemas/airPollutionSchema";
+import GeocodeSchema from "./schemas/geocodeSchema";
 import WeatherSchema from "./schemas/weatherSchema";
+
+const API_KEY = import.meta.env.VITE_API_KEY
 
 export async function getWeather({ lat, lon }: { lat: number; lon: number }) {
   const url =
@@ -29,3 +32,17 @@ export async function getGeoCode(location: string) {
 
   return geocode;
 }
+
+
+
+
+export async function getAirPollution({ lat, lon }: { lat: number; lon: number }) {
+  const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return AirPollutionSchema.parse(data);
+}
+
