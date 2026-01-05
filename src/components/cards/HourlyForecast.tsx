@@ -22,7 +22,7 @@ export default function HourlyForecast({ coords }: Props) {
   return (
     <Card
       title="Hourly Forecast (48 Hours)"
-      childrenClassName="flex gap-6 overflow-x-scroll px-2"
+      childrenClassName="flex gap-6 overflow-x-scroll "
     >
         {hourly.time.map((hour, index) => {
             const date = new Date(hour);
@@ -36,16 +36,19 @@ export default function HourlyForecast({ coords }: Props) {
             );
 
             return (
-                <div key={hour} className="flex flex-col gap-2 items-center p-2">
-                    <p className="whitespace-nowrap text-sm">
+                <div 
+                    key={hour} 
+                    className="flex flex-col 2xl:justify-between gap-2 items-center p-2"
+                >
+                    <p className="whitespace-nowrap 2xl:scale-110">
                         {date.toLocaleTimeString(undefined, {
                             hour: 'numeric',
                             minute: '2-digit',
                             hour12: true,
                         })}
                     </p>
-                    <WeatherIcon src={weatherInfo.icon} />
-                    <p className="text-sm font-medium">
+                    <WeatherIcon className="2xl:size-10" src={weatherInfo.icon} />
+                    <p className="2xl:scale-110">
                         {Math.round(hourly.temperature_2m[index])}°F
                     </p>
                 </div>

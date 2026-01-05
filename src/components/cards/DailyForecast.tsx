@@ -22,12 +22,12 @@ export default function DailyForecast({ coords }: Props) {
     return (
         <Card 
             title="Daily Forecast" 
-            childrenClassName="flex flex-col gap-4"
+            childrenClassName="flex flex-col gap-4 2xl:justify-between"
         >
             {daily?.time.map((date, index) => (
                 <div
                     key={date}
-                    className="flex justify-between items-center p-2 border rounded-md"
+                    className="flex justify-between px-4 py-0.5 border rounded-md"
                 >
                     <p className="w-9">
                         {new Date(date).toLocaleDateString(undefined, { 

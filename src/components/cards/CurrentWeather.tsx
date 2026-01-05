@@ -44,15 +44,23 @@ export default function CurrentWeather({ coords }: Props) {
     const humidity = data.hourly.relative_humidity_2m[closestIndex];
 
     return (
-        <Card title="Current Weather" childrenClassName="flex flex-col items-center gap-6">
+        <Card 
+            title="Current Weather" 
+            className="md:pb-11"
+            childrenClassName="flex flex-col items-center gap-6 2xl:justify-between"
+        >
             <div className="flex flex-col gap-2 items-center">
-                <h2 className="text-6xl text-center">{Math.round(current.temperature)}°F</h2>
+                <h2 className="text-6xl font-semibold text-center">
+                    {Math.round(current.temperature)}°F
+                </h2>
                 <WeatherIcon src={weatherInfo.icon} className="size-14" />
-                <h3 className="text-sm text-muted-foreground">{weatherInfo.description}</h3>
+                <h3 className="capitalize text-xl">
+                    {weatherInfo.description}
+                </h3>
             </div>
 
-            <div className="flex flex-col gap-2 text-center">
-                <p className="text-xl">Local Time:</p>
+            <div className="flex flex-col gap-2">
+                <p className="text-xl text-center">Local Time:</p>
                 <h3 className="text-4xl font-semibold">{localTime}</h3>
             </div>
 
