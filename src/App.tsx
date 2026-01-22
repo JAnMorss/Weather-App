@@ -19,6 +19,7 @@ import Hamburger from "/src/assets/hamburger.svg?react"
 import MobileHeader from "./components/MobileHeader"
 import LightDarkToggle from "./components/LightDarkToggle"
 import { getWeatherIcon } from "./utils/weatherIcons"
+import { Footer } from "./components/Footer"
 
 function App() {
   const [coordinates, setCoords] = useState<Coords>({ lat: 50, lon: 45 })
@@ -146,6 +147,8 @@ function App() {
         isSidePanelOpen={isSidePanelOpen}
         setIsSidePanelOpen={setIsSidePanelOpen}
       />
+
+      <Footer />
     </>
   )
 }
